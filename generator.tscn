@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://trvpy78curgk"]
+
+[ext_resource type="Texture2D" uid="uid://dkexdtgumg6fq" path="res://icon.svg" id="1_62e2m"]
+[ext_resource type="Script" uid="uid://d2i5tfl8cm1wa" path="res://button.gd" id="2_qtu10"]
+
+[node name="generator" type="Button" unique_id=1254918329]
+offset_right = 136.0
+offset_bottom = 136.0
+icon = ExtResource("1_62e2m")
+script = ExtResource("2_qtu10")

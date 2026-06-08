@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b7emtcf47787"]
+
+[ext_resource type="Script" uid="uid://bsb88qhgae7sr" path="res://UI/world_generation.gd" id="1_yj5kv"]
+[ext_resource type="PackedScene" uid="uid://trvpy78curgk" path="res://generator.tscn" id="2_4u2ab"]
+
+[node name="worldGeneration" type="Control" unique_id=1999334937]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yj5kv")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1529668644]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3
+
+[node name="generator" parent="." unique_id=1254918329 instance=ExtResource("2_4u2ab")]
+layout_mode = 0
+offset_left = 1127.0
+offset_top = 564.0
+offset_right = 1263.0
+offset_bottom = 700.0

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://ccaleqde68wbc"]
+
+[ext_resource type="Script" uid="uid://bmu2xeljxc7kr" path="res://UI/Renderer.gd" id="1_pxkgc"]
+[ext_resource type="PackedScene" uid="uid://oglbw3tv72i1" path="res://UI/slot_item.tscn" id="2_y0pga"]
+
+[node name="locationCard" type="Control" unique_id=359007393]
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pxkgc")
+slot = ExtResource("2_y0pga")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=996680688]
+custom_minimum_size = Vector2(1240, 680)
+layout_mode = 1
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Generator" type="HBoxContainer" parent="MarginContainer" unique_id=1064808091]
+custom_minimum_size = Vector2(1240, 680)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/Generator" unique_id=742427255]
+layout_mode = 2
+
+[node name="ImagenLocacion" type="TextureRect" parent="MarginContainer/Generator/PanelContainer" unique_id=1929023615]
+custom_minimum_size = Vector2(620, 340)
+layout_mode = 2
+expand_mode = 1
+
+[node name="CuadriculaItems" type="GridContainer" parent="MarginContainer/Generator" unique_id=1519164708]
+custom_minimum_size = Vector2(620, 340)
+layout_mode = 2
+columns = 3

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://oglbw3tv72i1"]
+
+[ext_resource type="Texture2D" uid="uid://ba1oj1owg2dqa" path="res://assets/SlotBackground.png" id="1_wlii4"]
+
+[node name="SlotItem" type="TextureRect" unique_id=257603945]
+custom_minimum_size = Vector2(200, 200)
+anchors_preset = -1
+anchor_right = 0.40600002
+anchor_bottom = 0.72200006
+offset_right = -419.68005
+offset_bottom = -419.84003
+texture = ExtResource("1_wlii4")
+expand_mode = 1
+
+[node name="IconoObjeto" type="TextureRect" parent="." unique_id=834016399]
+custom_minimum_size = Vector2(185, 185)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.029000001
+anchor_top = 0.029000001
+anchor_right = 0.9710001
+anchor_bottom = 0.9710001
+offset_left = -0.08000088
+offset_top = -0.08000088
+offset_right = 0.079956055
+offset_bottom = 0.079956055
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
