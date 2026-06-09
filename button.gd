@@ -6,9 +6,11 @@ extends Button
 # SEÑALES
 signal World(Generated);
 
-# MAQUINAS
+# MAQUINAS Y VARIABLES
 var rng = RandomNumberGenerator.new()
 var ruido = FastNoiseLite.new()
+
+var mapa = {}
 
 var locaciones = [
 	{"nombre": "building",		"peso": 50, "loot": 60, "limite": 5},
@@ -17,7 +19,8 @@ var locaciones = [
 	{"nombre": "well", 			"peso": 10, "loot": 40, "limite": 6},
 	{"nombre": "camp",			"peso": 5, 	"loot": 50, "limite": 5},
 	{"nombre": "bunker",		"peso": 2, 	"loot": 80, "limite": 25},
-	{"nombre": "corpse",		"peso": 1, 	"loot": 5, 	"limite": 3}
+	{"nombre": "corpse",		"peso": 1, 	"loot": 5, 	"limite": 3},
+	{"nombre": "Nada",			"peso": 30, "loot": 0, 	"limite": 0}
 ]
 
 var objetos = [
@@ -54,36 +57,69 @@ func _pressed() -> void:
 	ruido.noise_type = FastNoiseLite.TYPE_PERLIN
 	ruido.frequency = 0.08
 	
-	Mapa_Calor(30, 20)
+	Generate_Map(30, 20)
 	
 	_World = Generate_World(presupuesto);
 	World.emit(_World);	
 	
 
-func Mapa_Calor(ancho: int, alto: int):
-	if dep == 1: print("\nGENERACION MAPA DE CALOR TERMINADA -----------------");
+func Generate_Map(ancho: int, alto: int):
+	mapa.clear()
+	if dep>= 2: print("\n...INIT GEN MAPA")
 	
 	for y in range(alto):
 		var fila = ""
 		for x in range(ancho):
 			var valor = ruido.get_noise_2d(x, y)
+			var prespCelda = 0
+			var icono = ""
 			
 			if valor > 0.3:
-				fila += "██"
+				prespCelda = 80
+				icono = "██"
 			elif valor > 0.0:
-				fila += "▒▒"
+				prespCelda = 30
+				icono += "▒▒"
 			else:
-				fila += ".."
+				prespCelda = 10
+				icono += ".."
+			
+			fila += icono
+			
+			var genLocs = Generate_Item(prespCelda, locaciones)
+			if genLocs.size() > 0:
+				var prinLoc = genLocs[0]
+				if prinLoc["nombre"] != "Nada":
+					var genObjs = Generate_Item(prinLoc["loot"], objetos)
+					var listLoot = []
+					for obj in genObjs:
+						listLoot.append(obj["nombre"])
+					mapa[Vector2(x, y)] = {
+						"estructura": prinLoc["nombre"],
+						"loot": listLoot
+					}
 		print(fila)
+
+	if dep >= 1: print("\nGENERACION MAPA TERMINADA -----------------");
+	if dep >= 2: print("\nEl mundo tiene ", mapa.size(), " locaciones con loot")
+	
+	if dep >= 3:
+		var test_coord = Vector2(10, 10)
+		if mapa.has(test_coord):
+			print("\nEn la coordenada ", test_coord, " hay: ", mapa[test_coord]["estructura"])
+			print("Contiene este loot: ", mapa[test_coord]["loot"])
+		else:
+			print("\nLa coordenada ", test_coord, " es un terreno vacío.")
+	
 
 func Generate_World(presupuesto) -> Dictionary:
 	var _Final = {};
 	var Locaciones_Temp = Generate_Item(presupuesto, locaciones);
-	if dep == 1: print("\nGENERACION LOCACIONES TERMINADA -----------------");
+	if dep >= 1: print("\nGENERACION LOCACIONES TERMINADA -----------------");
 	
 	for loc in Locaciones_Temp:
 		var Objetos_Temp = Generate_Item(loc["loot"], objetos);
-		if dep == 1: print("GENERACION LOOT " + loc["nombre"] + " TERMINADA -----------------");
+		if dep >= 1: print("GENERACION LOOT " + loc["nombre"] + " TERMINADA -----------------");
 		
 		_Final[loc["nombre"]] = [];
 		

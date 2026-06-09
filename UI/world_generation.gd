@@ -13,10 +13,11 @@ func _on_mundo_generado(Generated: Dictionary) -> void:
 		child.queue_free()
 	
 	for loc in Generated:
-		var items = Generated[loc]
-		var ImgPath = "res://assets/locations/location_" + loc + ".png"
-		
-		var newCard = loc_Card_Scene.instantiate()
-		grid.add_child(newCard)
-		
-		newCard.setup_card(ImgPath, items)
+		if loc != "Nada":
+			var items = Generated[loc]
+			var ImgPath = "res://assets/locations/location_" + loc + ".png"
+			
+			var newCard = loc_Card_Scene.instantiate()
+			grid.add_child(newCard)
+			
+			newCard.setup_card(ImgPath, items)

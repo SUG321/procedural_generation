@@ -24,3 +24,4 @@ placeholder_text = "Semilla"
 layout_mode = 2
 icon = ExtResource("1_62e2m")
 script = ExtResource("2_qtu10")
+dep = 2
