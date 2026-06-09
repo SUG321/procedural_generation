@@ -64,9 +64,7 @@ func Generate_World(presupuesto) -> Dictionary:
 func Generate_Item(presupuesto: int, lista: Array) -> Array:
 	var pesoTotal = 0;
 	var _Seleccion = [];
-	var _PesoTotal = 0;
 	@warning_ignore("unused_variable")
-	var limObj = 0;
 	
 	for i in range(lista.size()):
 		pesoTotal += lista[i]["peso"];
@@ -93,8 +91,3 @@ func Generate_Item(presupuesto: int, lista: Array) -> Array:
 		else:
 			break;
 	return _Seleccion;
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-@warning_ignore("unused_parameter")
-func _process(delta: float) -> void:
-	pass

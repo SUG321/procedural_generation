@@ -4,25 +4,16 @@ extends Control
 @onready var imagen = $MarginContainer/Generator/PanelContainer/ImagenLocacion
 @onready var cuadricula = $MarginContainer/Generator/CuadriculaItems
 
-signal Location(location)
-
-func GenerateVisual(ruta_textura: String, lista: Array):
-	imagen.texture = load(ruta_textura)
+func setup_card(rutaTextura: String, listaItems: Array):
+	imagen.texture = load(rutaTextura)
 	
-	for hijo in cuadricula.get_children():
-		hijo.queue_free()
+	for child in cuadricula.get_children():
+		child.queue_free()
 	
-	for obj in lista:
+	for obj in listaItems:
 		if obj != "Nada":
-			var img = "res://assets/items/item_" + obj + ".png"
+			var imgPath = "res://assets/items/item_" + obj + ".png"
+			var newSlot = slot.instantiate()
+			cuadricula.add_child(newSlot)
 			
-			var nuevoSlot = slot.instantiate()
-			cuadricula.add_child(nuevoSlot)
-			nuevoSlot.get_node("IconoObjeto").texture = load(img)
-
-func _on_button_world(Generated: Variant) -> void:
-	for loc in Generated:
-		var items = Generated[loc]
-		var location = "res://assets/locations/location_" + loc + ".png"
-		
-		Location.emit(GenerateVisual(location, items))
+			newSlot.get_node("IconoObjeto").texture = load(imgPath)
