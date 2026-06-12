@@ -9,19 +9,39 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=523646731]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=591223855]
 layout_mode = 0
-offset_right = 480.0
-offset_bottom = 136.0
+offset_right = 426.0
+offset_bottom = 190.0
 
-[node name="Seed" type="TextEdit" parent="HBoxContainer" unique_id=849287091]
+[node name="Seed" type="HBoxContainer" parent="VBoxContainer" unique_id=523646731]
+layout_mode = 2
+
+[node name="Seed" type="TextEdit" parent="VBoxContainer/Seed" unique_id=849287091]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 placeholder_text = "Semilla"
 
-[node name="Button" type="Button" parent="HBoxContainer" unique_id=1254918329]
+[node name="Button" type="Button" parent="VBoxContainer/Seed" unique_id=1254918329]
 layout_mode = 2
 icon = ExtResource("1_62e2m")
 script = ExtResource("2_qtu10")
-dep = 2
+
+[node name="Coords" type="HBoxContainer" parent="VBoxContainer" unique_id=104129581]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Alto" type="SpinBox" parent="VBoxContainer/Coords" unique_id=659293772]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 10.0
+max_value = 250.0
+value = 10.0
+
+[node name="Ancho" type="SpinBox" parent="VBoxContainer/Coords" unique_id=1774513097]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 10.0
+max_value = 250.0
+value = 10.0

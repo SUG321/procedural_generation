@@ -2,6 +2,18 @@ class_name ObjDictionary
 extends RefCounted
 
 # DICCIONARIOS
+static var ItemsTexts = {
+	"backpack": preload("res://assets/items/item_backpack.png"),
+	"bag": preload("res://assets/items/item_bag.png"),
+	"clothes": preload("res://assets/items/item_clothes.png"),
+	"components": preload("res://assets/items/item_components.png"),
+	"food": preload("res://assets/items/item_food.png"),
+	"meds": preload("res://assets/items/item_meds.png"),
+	"metal": preload("res://assets/items/item_metal.png"),
+	"trash": preload("res://assets/items/item_trash.png"),
+	"water": preload("res://assets/items/item_water.png"),
+	"weapon": preload("res://assets/items/item_weapon.png")
+}
 static var StructuresTexts = {
 	"building": preload("res://assets/locations/location_building.png"),
 	"house": preload("res://assets/locations/location_house.png"),

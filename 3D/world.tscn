@@ -2,6 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://trvpy78curgk" path="res://generator.tscn" id="1_8vy5w"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8vy5w"]
+load_path = "res://.godot/imported/location_building.png-a3e6311f3a563037282733da2a903eec.s3tc.ctex"
+
 [node name="world" type="Node3D" unique_id=1183276572]
 
 [node name="generator" parent="." unique_id=1573440576 instance=ExtResource("1_8vy5w")]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1808972780]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1.5, 0, 4.9395995, 0)
+axis = 0
+texture = SubResource("CompressedTexture2D_8vy5w")

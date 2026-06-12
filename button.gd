@@ -1,7 +1,9 @@
 extends Button
 # EXPORTS Y MODULOS
 @onready var TextBox = $"../Seed"
-@onready var canvas = $"../../.."
+@onready var canvas = $"../../../.."
+@onready var width = $"../../Coords/Alto"
+@onready var depth = $"../../Coords/Ancho"
 
 # SEÑALES
 signal World(Generated);
@@ -11,6 +13,10 @@ func _ready() -> void:
 	pass
 	
 func _pressed() -> void:
-	World.emit(Generator.Generate(TextBox.text, canvas))
+	var Mundo =  Generator.new()
+	Mundo.depuration = 1
+	Mundo.map_width = width.value
+	Mundo.map_depth = depth.value
+	Mundo.Generate(TextBox.text, canvas)
 	pass
 	
