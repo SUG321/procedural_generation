@@ -1,10 +1,19 @@
 [gd_scene format=3 uid="uid://4psd3bm30ynl"]
 
-[ext_resource type="PackedScene" uid="uid://trvpy78curgk" path="res://generator.tscn" id="1_8vy5w"]
+[ext_resource type="PackedScene" uid="uid://trvpy78curgk" path="res://UI/Generator/generator.tscn" id="1_8vy5w"]
+[ext_resource type="Script" uid="uid://c8a2u5iwtgx1c" path="res://3D/map.gd" id="1_oy330"]
+[ext_resource type="PackedScene" uid="uid://bmne7y47eryae" path="res://assets/scenes/human.tscn" id="2_h3xdr"]
 
 [node name="world" type="Node3D" unique_id=1183276572]
 
-[node name="generator" parent="." unique_id=1573440576 instance=ExtResource("1_8vy5w")]
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=996025534]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 31.08, 70, 20.147)
+
+[node name="Map" type="Node3D" parent="." unique_id=276195315]
+script = ExtResource("1_oy330")
+
+[node name="Human" parent="." unique_id=643767556 instance=ExtResource("2_h3xdr")]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=842729313]
+
+[node name="generator" parent="UI" unique_id=1573440576 instance=ExtResource("1_8vy5w")]

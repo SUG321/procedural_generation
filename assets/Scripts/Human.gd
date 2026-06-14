@@ -1,9 +1,6 @@
 class_name Human
 extends Node3D
 
-# DEPURACION
-var depuration :int = 0
-
 # VARIABLES
 var actualRoute: Array[Vector2i] = []
 var movementVelocity: float = 2.0

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ccaleqde68wbc"]
 
-[ext_resource type="Script" uid="uid://bmu2xeljxc7kr" path="res://UI/Renderer.gd" id="1_pxkgc"]
-[ext_resource type="PackedScene" uid="uid://oglbw3tv72i1" path="res://UI/slot_item.tscn" id="2_y0pga"]
+[ext_resource type="Script" uid="uid://bmu2xeljxc7kr" path="res://UI/Not_Used/Renderer.gd" id="1_pxkgc"]
+[ext_resource type="PackedScene" uid="uid://oglbw3tv72i1" path="res://UI/Not_Used/slot_item.tscn" id="2_y0pga"]
 
 [node name="locationCard" type="Control" unique_id=359007393]
 layout_mode = 3

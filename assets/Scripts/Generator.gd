@@ -4,13 +4,11 @@ extends RefCounted
 # MAQUINAS
 var rng :RandomNumberGenerator = RandomNumberGenerator.new()
 var noise :FastNoiseLite = FastNoiseLite.new()
-var astarGrid :AStarGrid2D
 
 # ESCENAS
 var locationScene :PackedScene = preload("res://assets/scenes/location.tscn")
 
 # Variables
-var depuration :int= 1
 var mapWidth :int = 10 # X
 var mapDepth :int = 10 # Z
 var map :Dictionary = {}
@@ -36,7 +34,7 @@ func Generate(Seed: String, world: Node3D) -> void:
 
 func Generate_Heat_Map(ancho: int, alto: int):
 	# DEPURACION ---------------------------------------------
-	if depuration>= 2: print("\n...INIT GEN MAPA")
+	if Config.depuration>= 2: print("\n[generator.gd/Generate_Heat_Map]: ...INIT GEN MAPA")
 	# FIN DEPURACION -----------------------------------------
 	map.clear()
 	var uniquePositions = {}
@@ -51,15 +49,15 @@ func Generate_Heat_Map(ancho: int, alto: int):
 			if value > 0.3:
 				cellBudget = 80
 				# DEPURACION ---------------------------------------------
-				if depuration >= 2: icon = "██"
+				if Config.depuration >= 2: icon = "██"
 			elif value > 0.0:
 				cellBudget = 30
 				# DEPURACION ---------------------------------------------
-				if depuration >= 2: icon += "▒▒"
+				if Config.depuration >= 2: icon += "▒▒"
 			else:
 				cellBudget = 10
 				# DEPURACION ---------------------------------------------
-				if depuration >= 2: icon += ".."
+				if Config.depuration >= 2: icon += ".."
 			
 			fila += icon
 			
@@ -106,21 +104,20 @@ func Generate_Heat_Map(ancho: int, alto: int):
 						"loot": lootList
 					}
 		# DEPURACION ---------------------------------------------
-		if depuration >= 2: print(fila)
+		if Config.depuration >= 2: print(fila)
 		# FIN DEPURACION ----------------------------------------- 
 	
 	# DEPURACION ---------------------------------------------
-	if depuration >= 1: print("\nGENERACION MAPA TERMINADA -----------------");
-	if depuration >= 2: print("\nEl mundo tiene ", map.size(), " locaciones con loot")
+	if Config.depuration >= 1: print("\n[generator.gd/Generate_Heat_Map]: GENERACION MAPA TERMINADA. (", map.size(), " estructuras)");
 	
-	if depuration >= 3:
+	if Config.depuration >= 3:
 		var test_coordinate = Vector2(10, 10)
 		if map.has(test_coordinate):
 			print("\nEn la coordenada ", test_coordinate, " hay: ", map[test_coordinate]["structure"])
 			print("Contiene este loot: ", map[test_coordinate]["loot"])
 		else:
 			print("\nLa coordenada ", test_coordinate, " es un terreno vacío.")
-	# FIN DEPURACION ----------------------------------------- 
+	# FIN DEPURACION -----------------------------------------
 
 func Generate_Entities(budget: int, list: Array) -> Array:
 	var totalWeight = 0;
@@ -158,7 +155,7 @@ func Generate_3D_World(world: Node3D) -> void:
 			child.queue_free()
 	
 	# DEPURACION ---------------------------------------------
-	if depuration >= 2: print("\n...LEVANTANDO EL MUNDO 3D")
+	if Config.depuration >= 2: print("\n[generator.gd/Generate_3D_World]: ...GENERANDO MUNDO 3D")
 	# FIN DEPURACION ----------------------------------------- 
 	
 	for coordinate2D in map.keys():
@@ -190,34 +187,5 @@ func Generate_3D_World(world: Node3D) -> void:
 		world.add_child(newLocation)
 		
 	# DEPURACION ---------------------------------------------
-	if depuration >= 1: print("GENERACION DE MAPA 3D TERMINADA (" , map.size(), " estructuras)", " ----------------- ")
-	# FIN DEPURACION ----------------------------------------- 
-
-
-# FUNCIONES DE ASTARGRID
-func Initialize_Navigation(width: int, height: int) -> void:
-	astarGrid = AStarGrid2D.new()
-	
-	astarGrid.region = Rect2i(0, 0, width, height)
-	astarGrid.cell_size = Vector2(1, 1)
-	
-	astarGrid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
-	astarGrid.update()
-	
-	for cell in map:
-		var location = map[cell]["name"]
-		var numberOfSolids = 0
-		
-		if location == "building" or location == "house" or location == "house_boarded" or location == "bunker":
-			astarGrid.set_point_solid(cell, true)
-			numberOfSolids += 1
-			
-	if depuration >= 1: print("AStarGrid2D listo, ")
-
-func Get_Route(start: Vector2i, end: Vector2i) -> Array[Vector2i]:
-	if astarGrid.is_point_solid(end):
-		print("[GAMEPLAY]: No se puede llegar a ese lugar...")
-		return []
-	
-	var route = astarGrid.get_id_path(start, end)
-	return route
+	if Config.depuration >= 1: print("[generator.gd/Generate_3D_World]: MAPA 3D TERMINADO (" , map.size(), " estructuras)")
+	# FIN DEPURACION -----------------------------------------
