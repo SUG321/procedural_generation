@@ -1,3 +1,4 @@
+# ActionsMenu_UI.gd
 extends PanelContainer
 class_name ActionsMenu
 
@@ -12,6 +13,7 @@ signal on_navigate_requested(targetPosition3D: Vector3)
 # VARIABLES
 var structureTargetPosition: Vector3
 var structureType: String
+var currentStructure: Structure
 
 func _ready() -> void:
 	hide()
@@ -21,9 +23,10 @@ func _ready() -> void:
 		mouseController.on_structure_clicked.connect(_on_structure_clicked)
 		mouseController.on_click.connect(_on_click)
 
-func Show_Menu(screenPosition2D: Vector2, structurePosition3D: Vector3, type: String) -> void:
-	structureTargetPosition = structurePosition3D
-	structureType = type
+func Show_Menu(screenPosition2D: Vector2, structure: Structure) -> void:
+	currentStructure = structure
+	structureTargetPosition = structure.position
+	structureType = structure.structureType
 	
 	global_position = screenPosition2D
 	show()
@@ -34,9 +37,12 @@ func _on_go_button_pressed() -> void:
 	on_navigate_requested.emit(structureTargetPosition)
 	hide()
 func _on_button_loot_pressed() -> void:
-	Utilities.Print_Message("Abriendo Inventario de: {type}".format({"type": structureType}))
+	var loot = currentStructure.inventory
+	Utilities.Print_Message("Abriendo Inventario de: " + structureType + ". Contiene: " + str(loot))
 	hide()
-func _on_structure_clicked(structureNode: Node3D, screenPosition: Vector2) -> void:
-	Show_Menu(screenPosition, structureNode.global_position, structureNode.name)
+func _on_structure_clicked(structure: Node3D, screenPosition: Vector2) -> void:
+	if structure is Structure:
+		Show_Menu(screenPosition, structure)
+	
 func _on_click() -> void:
 	hide()

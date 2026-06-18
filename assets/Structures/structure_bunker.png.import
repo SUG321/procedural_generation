@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw8cbmllsvoot"
-path="res://.godot/imported/location_well.png-bfcaa0ccccf850766f710c10d2817a20.ctex"
+uid="uid://gww53c1kmyis"
+path="res://.godot/imported/structure_bunker.png-018c91b84a478683e3610901311cd2be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/locations/location_well.png"
-dest_files=["res://.godot/imported/location_well.png-bfcaa0ccccf850766f710c10d2817a20.ctex"]
+source_file="res://assets/Structures/structure_bunker.png"
+dest_files=["res://.godot/imported/structure_bunker.png-018c91b84a478683e3610901311cd2be.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dckam8go13lmt"
-path="res://.godot/imported/location_house.png-19d73760bdcca2b843acae77b49ad01b.ctex"
+uid="uid://dy27238e44hlx"
+path="res://.godot/imported/structure_camp.png-477bc24ee2ab7041f7505924454f4c9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/locations/location_house.png"
-dest_files=["res://.godot/imported/location_house.png-19d73760bdcca2b843acae77b49ad01b.ctex"]
+source_file="res://assets/Structures/structure_camp.png"
+dest_files=["res://.godot/imported/structure_camp.png-477bc24ee2ab7041f7505924454f4c9b.ctex"]
 
 [params]
 

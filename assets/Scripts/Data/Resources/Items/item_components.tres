@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d2s7muh3hq6ks"]
+
+[ext_resource type="Script" uid="uid://dr0v2qk7vk838" path="res://assets/Scripts/Data/ItemData.gd" id="1_rccbt"]
+[ext_resource type="Texture2D" uid="uid://bi0fdwbqkxs3m" path="res://assets/items/item_components.png" id="2_dc13r"]
+
+[resource]
+script = ExtResource("1_rccbt")
+id = "components"
+displayName = "Componentes"
+texture = ExtResource("2_dc13r")
+spawnWeight = 35
+metadata/_custom_type_script = "uid://dr0v2qk7vk838"

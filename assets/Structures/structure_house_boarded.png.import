@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbou7wpw5cgsb"
-path.s3tc="res://.godot/imported/location_house_boarded.png-41064cb50c6f3023e9390b6e1ae3f76c.s3tc.ctex"
+path.s3tc="res://.godot/imported/structure_house_boarded.png-1c4f30b142e5e8ca73f8a432c71ac36b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/locations/location_house_boarded.png"
-dest_files=["res://.godot/imported/location_house_boarded.png-41064cb50c6f3023e9390b6e1ae3f76c.s3tc.ctex"]
+source_file="res://assets/Structures/structure_house_boarded.png"
+dest_files=["res://.godot/imported/structure_house_boarded.png-1c4f30b142e5e8ca73f8a432c71ac36b.s3tc.ctex"]
 
 [params]
 

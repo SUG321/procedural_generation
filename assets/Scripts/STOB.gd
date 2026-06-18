@@ -15,13 +15,13 @@ static var ItemsTexts :Dictionary = {
 	"weapon": preload("res://assets/items/item_weapon.png")
 }
 static var StructuresTexts :Dictionary = {
-	"building": preload("res://assets/locations/location_building.png"),
-	"house": preload("res://assets/locations/location_house.png"),
-	"house_boarded": preload("res://assets/locations/location_house_boarded.png"),
-	"well": preload("res://assets/locations/location_well.png"),
-	"camp": preload("res://assets/locations/location_camp.png"),
-	"bunker": preload("res://assets/locations/location_bunker.png"),
-	"corpse": preload("res://assets/locations/location_corpse.png")
+	"building": preload("res://assets/structures/structure_building.png"),
+	"house": preload("res://assets/structures/structure_house.png"),
+	"house_boarded": preload("res://assets/structures/structure_house_boarded.png"),
+	"well": preload("res://assets/structures/structure_well.png"),
+	"camp": preload("res://assets/structures/structure_camp.png"),
+	"bunker": preload("res://assets/structures/structure_bunker.png"),
+	"corpse": preload("res://assets/structures/structure_corpse.png")
 }
 
 # DICCIONARIOS

@@ -6,7 +6,7 @@ var rng :RandomNumberGenerator = RandomNumberGenerator.new()
 var noise :FastNoiseLite = FastNoiseLite.new()
 
 # ESCENAS
-var locationScene :PackedScene = preload("res://assets/scenes/location.tscn")
+var locationScene :PackedScene = preload("res://assets/scenes/structure.tscn")
 
 # Variables
 var mapWidth :int = 10 # X
@@ -159,6 +159,10 @@ func Generate_3D_World(world: Node3D) -> void:
 		var locationName = locationData["structure"]
 		
 		var newLocation = locationScene.instantiate()
+		newLocation.structureType = locationName
+		newLocation.inventory = locationData["loot"]
+		newLocation.name = locationName + "_" + str(coordinate2D.x) + "_" + str(coordinate2D.y)
+		
 		var sprite3D = newLocation.get_node("Sprite3D")
 		var collisionBox3D = newLocation.get_node("CollisionShape3D")
 		
