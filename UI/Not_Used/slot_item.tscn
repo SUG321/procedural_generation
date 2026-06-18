@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://oglbw3tv72i1"]
 
-[ext_resource type="Texture2D" uid="uid://ba1oj1owg2dqa" path="res://assets/SlotBackground.png" id="1_wlii4"]
+[ext_resource type="Texture2D" uid="uid://ba1oj1owg2dqa" path="res://items/slot_background.png" id="1_wlii4"]
 
 [node name="SlotItem" type="TextureRect" unique_id=257603945]
 custom_minimum_size = Vector2(68, 68)

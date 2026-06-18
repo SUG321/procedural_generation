@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://4psd3bm30ynl"]
+
+[ext_resource type="PackedScene" uid="uid://trvpy78curgk" path="res://ui/generator_menu/generator_menu.tscn" id="1_8vy5w"]
+[ext_resource type="Script" uid="uid://bgqcuwt5mfo2t" path="res://world/mouse_controller.gd" id="1_jqvin"]
+[ext_resource type="Script" uid="uid://c8a2u5iwtgx1c" path="res://world/map.gd" id="1_oy330"]
+[ext_resource type="PackedScene" uid="uid://bmne7y47eryae" path="res://entities/human/human.tscn" id="2_h3xdr"]
+[ext_resource type="PackedScene" uid="uid://dow1vlcowe1gk" path="res://ui/actions_menu/actions_menu.tscn" id="4_1s1bm"]
+[ext_resource type="Script" uid="uid://bgs7d1n25grla" path="res://world/cursor.gd" id="6_bxodh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bxodh"]
+transparency = 1
+albedo_color = Color(0.71805245, 1, 0.6328125, 1)
+emission_enabled = true
+emission = Color(0.7176471, 1, 0.6313726, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jqvin"]
+
+[node name="world" type="Node3D" unique_id=1183276572]
+
+[node name="Camera3D1" type="Camera3D" parent="." unique_id=996025534]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 31.08, 70, 20.147)
+projection = 1
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=917796083]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 25.264786, 69.061714, 39.107025)
+projection = 1
+current = true
+size = 89.311
+script = ExtResource("1_jqvin")
+
+[node name="Map" type="Node3D" parent="." unique_id=276195315 node_paths=PackedStringArray("human", "mouseController", "actionsMenu")]
+script = ExtResource("1_oy330")
+human = NodePath("../Human")
+mouseController = NodePath("../Camera3D")
+actionsMenu = NodePath("../UI/ActionsMenu")
+
+[node name="Limits" type="Node3D" parent="Map" unique_id=700117841]
+
+[node name="Structures" type="Node3D" parent="Map" unique_id=623700313]
+
+[node name="Human" parent="." unique_id=643767556 instance=ExtResource("2_h3xdr")]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=842729313]
+
+[node name="generator" parent="UI" unique_id=1573440576 instance=ExtResource("1_8vy5w")]
+
+[node name="ActionsMenu" parent="UI" unique_id=222244645 node_paths=PackedStringArray("mouseController") instance=ExtResource("4_1s1bm")]
+mouseController = NodePath("../../Camera3D")
+
+[node name="Cursor" type="MeshInstance3D" parent="." unique_id=1114944768 node_paths=PackedStringArray("mouseController")]
+material_override = SubResource("StandardMaterial3D_bxodh")
+mesh = SubResource("PlaneMesh_jqvin")
+script = ExtResource("6_bxodh")
+mouseController = NodePath("../Camera3D")

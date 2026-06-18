@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://trvpy78curgk"]
+
+[ext_resource type="Script" uid="uid://d2i5tfl8cm1wa" path="res://ui/generator_menu/generator_menu.gd" id="1_2byks"]
+[ext_resource type="Texture2D" uid="uid://dkexdtgumg6fq" path="res://icon.svg" id="1_62e2m"]
+
+[node name="Generator" type="Control" unique_id=788157624]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 5.0
+offset_bottom = 5.0
+script = ExtResource("1_2byks")
+
+[node name="Panel" type="Panel" parent="." unique_id=395823526]
+custom_minimum_size = Vector2(107, 47.75)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 425.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1077903512]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=591223855]
+layout_mode = 2
+
+[node name="Seed" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=523646731]
+layout_mode = 2
+
+[node name="Seed" type="TextEdit" parent="Panel/MarginContainer/VBoxContainer/Seed" unique_id=849287091]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 15
+placeholder_text = "Semilla"
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/Seed" unique_id=1254918329]
+layout_mode = 2
+icon = ExtResource("1_62e2m")
+
+[node name="Coords" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=104129581]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Alto" type="SpinBox" parent="Panel/MarginContainer/VBoxContainer/Coords" unique_id=659293772]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 10.0
+max_value = 250.0
+value = 10.0
+
+[node name="Ancho" type="SpinBox" parent="Panel/MarginContainer/VBoxContainer/Coords" unique_id=1774513097]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 10.0
+max_value = 250.0
+value = 10.0
+
+[node name="MessagesPanel" type="Panel" parent="." unique_id=7541794]
+layout_mode = 0
+offset_top = 195.0
+offset_right = 425.0
+offset_bottom = 275.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MessagesPanel" unique_id=2101601377]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="MessagesTextBox" type="TextEdit" parent="MessagesPanel/MarginContainer" unique_id=333109761]
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+placeholder_text = "Aqui se mostraran los mensajes..."
+editable = false
+wrap_mode = 1
+
+[node name="MessageTimer" type="Timer" parent="." unique_id=350136060]
+one_shot = true

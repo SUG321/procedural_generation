@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b7emtcf47787"]
 
-[ext_resource type="Script" uid="uid://bsb88qhgae7sr" path="res://UI/Not_Used/world_generation.gd" id="1_yj5kv"]
-[ext_resource type="PackedScene" uid="uid://trvpy78curgk" path="res://UI/Generator/generator.tscn" id="2_4u2ab"]
-[ext_resource type="PackedScene" uid="uid://ccaleqde68wbc" path="res://UI/Not_Used/location_card.tscn" id="2_75n7t"]
+[ext_resource type="Script" uid="uid://bsb88qhgae7sr" path="res://ui/not_used/world_generation.gd" id="1_yj5kv"]
+[ext_resource type="PackedScene" uid="uid://trvpy78curgk" path="res://ui/generator_menu/generator_menu.tscn" id="2_4u2ab"]
+[ext_resource type="PackedScene" uid="uid://ccaleqde68wbc" path="res://ui/not_used/location_card.tscn" id="2_75n7t"]
 
 [node name="worldGeneration" type="Control" unique_id=1044936693]
 layout_mode = 3
