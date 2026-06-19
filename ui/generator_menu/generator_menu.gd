@@ -1,16 +1,16 @@
-extends Control
+extends PanelContainer
 
-# MODULOS ONREADY
+# MODULOS EXPORT
 	# GENERATOR PANEL
-@onready var map3D: Node3D = $"../../Map"
-@onready var button: Button = $Panel/MarginContainer/VBoxContainer/Seed/Button
-@onready var seedText: TextEdit = $Panel/MarginContainer/VBoxContainer/Seed/Seed
-@onready var widthRange: Range = $Panel/MarginContainer/VBoxContainer/Coords/Alto
-@onready var depthRange: Range = $Panel/MarginContainer/VBoxContainer/Coords/Ancho
+@export var map3D: Node3D
+@export var button: Button # SEED BUTTON
+@export var seedText: TextEdit # SEED TEXTBOX
+@export var widthRange: Range # RANGE ALTO
+@export var depthRange: Range # RANGE ANCHO
 
 	# MESSAGES PANEL
-@onready var messagesTextBox: TextEdit = $MessagesPanel/MarginContainer/MessagesTextBox
-@onready var messageTimer: Timer = $MessageTimer
+@export var messagesTextBox: TextEdit # MESSAGES TEXTBOX
+@export var messageTimer: Timer # MESSAGES TIMER
 
 # VARIABLES
 var defaultMessage = "..."

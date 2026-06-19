@@ -41,10 +41,31 @@ actionsMenu = NodePath("../UI/ActionsMenu")
 [node name="Human" parent="." unique_id=643767556 instance=ExtResource("2_h3xdr")]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=842729313]
+follow_viewport_enabled = true
 
-[node name="generator" parent="UI" unique_id=1573440576 instance=ExtResource("1_8vy5w")]
+[node name="LeftPanel" type="PanelContainer" parent="UI" unique_id=1860093225]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 425.0
+offset_bottom = 248.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/LeftPanel" unique_id=768619098]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="generator" parent="UI/LeftPanel/MarginContainer" unique_id=1573440576 node_paths=PackedStringArray("map3D") instance=ExtResource("1_8vy5w")]
+layout_mode = 2
+map3D = NodePath("../../../../Map")
 
 [node name="ActionsMenu" parent="UI" unique_id=222244645 node_paths=PackedStringArray("mouseController") instance=ExtResource("4_1s1bm")]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 125.0
+offset_bottom = 81.0
 mouseController = NodePath("../../Camera3D")
 
 [node name="Cursor" type="MeshInstance3D" parent="." unique_id=1114944768 node_paths=PackedStringArray("mouseController")]
