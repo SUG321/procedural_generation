@@ -1,4 +1,4 @@
-# ActionsMenu_UI.gd
+# actions_menu.gd
 extends PanelContainer
 class_name ActionsMenu
 

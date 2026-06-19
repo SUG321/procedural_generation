@@ -36,7 +36,7 @@ func _on_button_pressed() -> void: # FUNCION: BOTON PRESIONADO
 
 func _on_message_emit(message: String) -> void:
 	messagesTextBox.text = message
-	messageTimer.start(2.0)
+	messageTimer.start(3.0)
 	
 func _on_message_timer_timeout() -> void:
 	messagesTextBox.text = defaultMessage
