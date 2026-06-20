@@ -5,7 +5,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uud5k"]
 
-[node name="Generator" type="PanelContainer" unique_id=79673042 node_paths=PackedStringArray("button", "seedText", "widthRange", "depthRange", "messagesTextBox", "messageTimer")]
+[node name="Generator" type="PanelContainer" unique_id=79673042 node_paths=PackedStringArray("button", "seedText", "widthRange", "depthRange", "messagesTextBox")]
 offset_right = 420.0
 offset_bottom = 270.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_uud5k")
@@ -15,7 +15,6 @@ seedText = NodePath("VBoxContainer/GeneratorPanel/MarginContainer/VBoxContainer/
 widthRange = NodePath("VBoxContainer/GeneratorPanel/MarginContainer/VBoxContainer/Coords/Alto")
 depthRange = NodePath("VBoxContainer/GeneratorPanel/MarginContainer/VBoxContainer/Coords/Ancho")
 messagesTextBox = NodePath("VBoxContainer/MessagesPanel/MarginContainer2/MessagesTextBox")
-messageTimer = NodePath("VBoxContainer/MessagesPanel/MarginContainer2/MessageTimer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=935023697]
 layout_mode = 2

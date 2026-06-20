@@ -157,7 +157,7 @@ func Generate_3D_World(world: Node3D) -> void:
 		var structure: StructureData = locationData.structure
 		
 		var newLocation: Node3D = locationScene.instantiate()
-		newLocation.structureType = structure.id
+		newLocation.structureName = structure.displayName
 		newLocation.Set_Loot(locationData.loot)
 		newLocation.name = structure.id + "_" + str(coordinate2D.x) + "_" + str(coordinate2D.y)
 		

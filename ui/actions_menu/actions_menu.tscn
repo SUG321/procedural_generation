@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://dow1vlcowe1gk"]
 
 [ext_resource type="Script" uid="uid://cw7acu7310r0w" path="res://ui/actions_menu/actions_menu.gd" id="1_7hrk5"]
+[ext_resource type="PackedScene" uid="uid://ucoyd1xr227k" path="res://ui/inventory/inventory.tscn" id="2_mifqh"]
 
-[node name="ActionsMenu" type="PanelContainer" unique_id=222244645]
+[node name="ActionsMenu" type="PanelContainer" unique_id=222244645 node_paths=PackedStringArray("goButton", "lootButton", "lootTimer")]
 offset_right = 120.0
 offset_bottom = 70.0
 script = ExtResource("1_7hrk5")
+goButton = NodePath("MarginContainer/VBoxContainer/GoButton")
+lootButton = NodePath("MarginContainer/VBoxContainer/LootButton")
+lootTimer = NodePath("LootTimer")
+inventoryScene = ExtResource("2_mifqh")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=200988144]
 layout_mode = 2
@@ -24,3 +29,7 @@ text = "Ir Aqui"
 [node name="LootButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=124981]
 layout_mode = 2
 text = "Saquear"
+
+[node name="LootTimer" type="Timer" parent="." unique_id=1307564309]
+wait_time = 3.0
+one_shot = true

@@ -11,6 +11,7 @@ class_name InventoryUI extends PanelContainer
 var currentInventory: Inventory
 
 func loadInventory(newInventory: Inventory) -> void:
+	titleLabel.text = name
 	currentInventory = newInventory
 	Refresh_UI()
 

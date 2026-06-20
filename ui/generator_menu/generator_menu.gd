@@ -11,7 +11,7 @@ extends PanelContainer
 
 	# MESSAGES PANEL
 @export var messagesTextBox: TextEdit # MESSAGES TEXTBOX
-@export var messageTimer: Timer # MESSAGES TIMER
+@export var human: Human # MESSAGES HUMAN (PATH ENDED SIGNAL)
 
 # VARIABLES
 var defaultMessage: String = "..."
@@ -20,7 +20,6 @@ var defaultMessage: String = "..."
 func _ready() -> void:
 	button.pressed.connect(_on_button_pressed) # CONECCION A SEÑAL: BOTON PRESIONADO
 	Utilities.connect("signalMessage", _on_message_emit) # CONECCION A SEÑAL: MENSAJE EMITIDO POR CLASE UTILITIES
-	messageTimer.timeout.connect(_on_message_timer_timeout) # CONECCION A SEÑAL: TIMER AGOTADO
 
 # SEÑALES
 func _on_button_pressed() -> void: # FUNCION: BOTON PRESIONADO
@@ -37,7 +36,5 @@ func _on_button_pressed() -> void: # FUNCION: BOTON PRESIONADO
 
 func _on_message_emit(message: String) -> void:
 	messagesTextBox.text = message
-	messageTimer.start(3.0)
-	
-func _on_message_timer_timeout() -> void:
+	await human.on_path_ended
 	messagesTextBox.text = defaultMessage

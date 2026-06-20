@@ -1,7 +1,7 @@
 # Structure.gd
 class_name Structure extends Area3D
 
-var structureType: String = ""
+var structureName: String = ""
 var inventoryData: Inventory
 
 func _ready() -> void:

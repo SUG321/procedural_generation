@@ -2,12 +2,17 @@
 class_name Human extends Node3D
 
 # EXPORTS
+@export var humanName: String = "Pablito"
 @export var inventoryData: Inventory
+
+# SIGNALS
+signal on_path_ended()
 
 # VARIABLES
 var actualRoute :Array[Vector2i] = []
 var movementVelocity :float = 6.0
 var solidStructures: Array[Vector2i]
+var pathEneded: bool = false
 
 func _ready() -> void:
 	if inventoryData == null:
@@ -39,6 +44,8 @@ func _physics_process(delta :float) -> void:
 		
 		if global_position.distance_to(destinationPosition) < 0.05:
 			actualRoute.pop_front()
+			if actualRoute == []:
+				on_path_ended.emit()
 	else:
 		# [DEV] PROXIMA LOGICA A TRABAJAR UNA VEZ SE ACABE LA RUTA
 		pass

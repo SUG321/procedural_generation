@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://c8a2u5iwtgx1c" path="res://world/map.gd" id="1_oy330"]
 [ext_resource type="PackedScene" uid="uid://bmne7y47eryae" path="res://entities/human/human.tscn" id="2_h3xdr"]
 [ext_resource type="PackedScene" uid="uid://dow1vlcowe1gk" path="res://ui/actions_menu/actions_menu.tscn" id="4_1s1bm"]
-[ext_resource type="PackedScene" uid="uid://ucoyd1xr227k" path="res://ui/inventory/inventory.tscn" id="5_sc4t8"]
 [ext_resource type="Script" uid="uid://bgs7d1n25grla" path="res://world/cursor.gd" id="6_bxodh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bxodh"]
@@ -62,19 +61,22 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="generator" parent="UI/LeftPanel/MarginContainer/VBoxContainer" unique_id=1573440576 node_paths=PackedStringArray("map3D") instance=ExtResource("1_8vy5w")]
+[node name="generator" parent="UI/LeftPanel/MarginContainer/VBoxContainer" unique_id=1573440576 node_paths=PackedStringArray("map3D", "human") instance=ExtResource("1_8vy5w")]
 layout_mode = 2
 map3D = NodePath("../../../../../Map")
+human = NodePath("../../../../../Human")
 
-[node name="Inventory" parent="UI/LeftPanel/MarginContainer/VBoxContainer" unique_id=1755014037 instance=ExtResource("5_sc4t8")]
+[node name="Inventories" type="VBoxContainer" parent="UI/LeftPanel/MarginContainer/VBoxContainer" unique_id=1609640576]
 layout_mode = 2
 
-[node name="ActionsMenu" parent="UI" unique_id=222244645 node_paths=PackedStringArray("mouseController") instance=ExtResource("4_1s1bm")]
+[node name="ActionsMenu" parent="UI" unique_id=222244645 node_paths=PackedStringArray("mouseController", "human", "inventoryNode") instance=ExtResource("4_1s1bm")]
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 125.0
 offset_bottom = 81.0
 mouseController = NodePath("../../Camera3D")
+human = NodePath("../../Human")
+inventoryNode = NodePath("../LeftPanel/MarginContainer/VBoxContainer/Inventories")
 
 [node name="Cursor" type="MeshInstance3D" parent="." unique_id=1114944768 node_paths=PackedStringArray("mouseController")]
 material_override = SubResource("StandardMaterial3D_bxodh")
