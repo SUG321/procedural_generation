@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cs3si0j0eh4j1"]
+
+[ext_resource type="Script" uid="uid://qqw1f5lhl735" path="res://ui/inventory/inventory_slot.gd" id="1_nktrt"]
+[ext_resource type="Texture2D" uid="uid://ba1oj1owg2dqa" path="res://items/slot_background.png" id="2_hwg0l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uud5k"]
+
+[node name="InventorySlot" type="PanelContainer" unique_id=1993780617 node_paths=PackedStringArray("itemTexture")]
+offset_right = 80.0
+offset_bottom = 80.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uud5k")
+script = ExtResource("1_nktrt")
+itemTexture = NodePath("MarginContainer/ItemTextureMarginContainer/ItemTexture")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=709189598]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="MarginsTexture" type="TextureRect" parent="MarginContainer" unique_id=83434998]
+layout_mode = 2
+texture = ExtResource("2_hwg0l")
+expand_mode = 1
+
+[node name="ItemTextureMarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=432412417]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="ItemTexture" type="TextureRect" parent="MarginContainer/ItemTextureMarginContainer" unique_id=1120169812]
+layout_mode = 2
+expand_mode = 1

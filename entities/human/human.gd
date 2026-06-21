@@ -17,6 +17,8 @@ var pathEneded: bool = false
 func _ready() -> void:
 	if inventoryData == null:
 		inventoryData = Inventory.new()
+		inventoryData.canDropItems = true
+		inventoryData.canGetItems = false
 
 func Follow_Route(newRoute :Array[Vector2i]) -> void:
 	if newRoute.size() != 0:

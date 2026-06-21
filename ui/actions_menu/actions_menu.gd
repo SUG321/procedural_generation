@@ -43,7 +43,7 @@ func New_Inventory(inventoryName: String, inventory: Inventory) -> void:
 
 # FUNCIONES DE SEÑALES
 func _on_go_button_pressed() -> void:
-	Utilities.Print_Message("Moviendose hacia: {type}".format({"type": structureName}))
+	Utilities.Print_Message("Moviendose hacia: " + structureName)
 	on_navigate_requested.emit(structureTargetPosition)
 	hide()
 	await human.on_path_ended
