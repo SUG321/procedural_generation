@@ -1,9 +1,6 @@
 # actions_menu.gd
 class_name ActionsMenu extends PanelContainer
 
-# SEÑALES
-signal on_navigate_requested(targetPosition3D: Vector3)
-
 # EXPORTS
 @export var mouseController: MouseController # CLICKS SIGNALS
 @export var human: Human # ON PATH ENDED SIGNAL
@@ -11,11 +8,13 @@ signal on_navigate_requested(targetPosition3D: Vector3)
 @export var lootButton: Button # CLICKED SIGNAL
 @export var lootTimer: Timer # TIMER ENDED SIGNAL
 @export var inventoriesManager: InventoriesManager # GESTOR DE INVENTARIOS
+@export var mapLogic: MapLogic # GESTOR DE RUTAS
 
 # VARIABLES
 var structureTargetPosition: Vector3
 var structureName: String = ""
 var currentStructure: Structure = null
+var isLooting: bool = false
 
 func _ready() -> void:
 	hide()
@@ -38,14 +37,22 @@ func Show_Menu(screenPosition2D: Vector2, structure: Structure) -> void:
 # FUNCIONES DE SEÑALES
 func _on_go_button_pressed() -> void:
 	Utilities.Print_Message("Moviendose hacia: " + structureName)
-	on_navigate_requested.emit(structureTargetPosition)
+	mapLogic.Request_Movement(structureTargetPosition)
 	hide()
 	await human.on_path_ended
 
 func _on_button_loot_pressed() -> void:
 	hide()
 	
-	on_navigate_requested.emit(structureTargetPosition)
+	if isLooting:
+		Utilities.Print_Message("Ya se esta looteando una estructura. Espera a que termine.")
+		return
+	
+	isLooting = mapLogic.Request_Movement(structureTargetPosition)
+	
+	if !isLooting:
+		return
+	
 	await human.on_path_ended
 	
 	lootTimer.start(3)
@@ -56,6 +63,7 @@ func _on_button_loot_pressed() -> void:
 	inventoriesManager.Show_Human_Inventory()
 	
 	inventoriesManager.New_Inventory(structureName, currentStructure.inventoryData)
+	isLooting = false
 
 func _on_structure_clicked(structure: Node3D, screenPosition: Vector2) -> void:
 	if structure is Structure:

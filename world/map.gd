@@ -1,20 +1,14 @@
 # map.gd
-extends Node3D
+class_name MapLogic extends Node3D
 
 # EXPORTS
 @export var human: Human
-@export var mouseController: MouseController
-@export var actionsMenu: ActionsMenu
 
 # ASTARGRID
 var astarGrid :AStarGrid2D
 
 # VARIABLES
 var solidStructures :Array[Vector2i]
-
-func _ready() -> void:
-	mouseController.on_ground_clicked.connect(_process_movement) # CLIC EN EL SUELO
-	actionsMenu.on_navigate_requested.connect(_process_movement) # CLIC EN EL BOTON "IR AQUI" DEL MENU DE ACCIONES
 
 # FUNCIONES DE ASTARGRID
 func Initialize_Navigation(map: Dictionary[Vector2, MapCell], width: int, height: int) -> void:
@@ -117,35 +111,43 @@ func Get_Free_Adyacent_Cell(targetCell: Vector2i, actualPlayerCell: Vector2i) ->
 
 # FUNCIONES DE SEÑALES
 
-func _process_movement(targetPosition3D: Vector3) -> void:
+func Request_Movement(targetPosition3D: Vector3) -> bool:
 	var destinyCell: Vector2i = Vector2i(
 		round(targetPosition3D.x / Config.cellSize),
 		round(targetPosition3D.z / Config.cellSize)
 	)
+	
+	if astarGrid == null:
+		return false
+	
+	if not astarGrid.is_in_boundsv(destinyCell): # EN CASO DE QUE SALGA DEL MAPA
+		Utilities.Print_Message("El lugar al que intentas ir está fuera de los límites del mapa.")
+		return false
 
-	if astarGrid != null: # SI NO ESTA VACIA
-		if not astarGrid.is_in_boundsv(destinyCell): # EN CASO DE QUE SALGA DEL MAPA
-			Utilities.Print_Message("El lugar al que intentas ir está fuera de los límites del mapa.")
-			return
-
-		var cellStart: Vector2i = Vector2i(
-			round(human.global_position.x / Config.cellSize),
-			round(human.global_position.z / Config.cellSize)
-		)
+	var cellStart: Vector2i = Vector2i(
+		round(human.global_position.x / Config.cellSize),
+		round(human.global_position.z / Config.cellSize)
+	)
+	
+	var route: Array[Vector2i] = Get_Route(cellStart, destinyCell)
+	
+	if route.size() == 0:
+		return false
+	
+	human.Follow_Route(route)
+	
+	# DEPURACION ---------------------------------------------
+	if Config.depuration >= 2:
+		print("\n[map.gd/_unhandled_input]: --- NUEVO CLIC DETECTADO ---")
+		print("- Coordenada Real 3D  : X: ", snapped(targetPosition3D.x, 0.1), ", Z: ", snapped(targetPosition3D.z, 0.1))
+		print("- Traducido a Celda   : ", destinyCell)
+		print("- Inicio del Personaje: ", cellStart)
 		
-		var route: Array[Vector2i] = Get_Route(cellStart, destinyCell)
-		human.Follow_Route(route)
-		
-		# DEPURACION ---------------------------------------------
-		if Config.depuration >= 2:
-			print("\n[map.gd/_unhandled_input]: --- NUEVO CLIC DETECTADO ---")
-			print("- Coordenada Real 3D  : X: ", snapped(targetPosition3D.x, 0.1), ", Z: ", snapped(targetPosition3D.z, 0.1))
-			print("- Traducido a Celda   : ", destinyCell)
-			print("- Inicio del Personaje: ", cellStart)
-			
-			if route.is_empty():
-				print("- ESTADO DE RUTA: AStarGrid devolvió [] (Destino bloqueado o inalcanzable)")
-			else:
-				print("- ESTADO DE RUTA: Ruta trazada exitosamente.")
-			print("------------------------------------------------------------------")
-		# FIN DEPURACION -----------------------------------------
+		if route.is_empty():
+			print("- ESTADO DE RUTA: AStarGrid devolvió [] (Destino bloqueado o inalcanzable)")
+		else:
+			print("- ESTADO DE RUTA: Ruta trazada exitosamente.")
+		print("------------------------------------------------------------------")
+	# FIN DEPURACION -----------------------------------------
+	
+	return true

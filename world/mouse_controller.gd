@@ -3,9 +3,11 @@ class_name MouseController extends Camera3D
 
 # SEÑALES
 signal on_click()
-signal on_ground_clicked(intersectionPoint: Vector3)
-signal on_structure_clicked(structureNode: Node3D, screenPosition: Vector2)
 signal on_mouse_motion(intersectionPoint: Vector3)
+signal on_structure_clicked(structureNode: Node3D, screenPosition: Vector2)
+
+# EXPORTS
+@export var mapLogic: MapLogic
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouse:
@@ -35,7 +37,7 @@ func Raycast_2D(event: InputEvent) -> void:
 		var intersectionPoint: Vector3 = plane.intersects_ray(rayOrigin, rayDirection)
 		
 		if intersectionPoint != null:
-			on_ground_clicked.emit(intersectionPoint)
+			mapLogic.Request_Movement(intersectionPoint)
 	# FINAL RAYCAST 3D -------------------------
 
 func Raycast_3D(rayOrigin: Vector3, rayDirection: Vector3) -> bool:

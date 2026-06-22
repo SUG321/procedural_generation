@@ -23,13 +23,12 @@ emission = Color(0.7176471, 1, 0.6313726, 1)
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 31.08, 70, 20.147)
 projection = 1
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=917796083 node_paths=PackedStringArray("mapLogic")]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=917796083]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 25.264786, 69.061714, 39.107025)
 projection = 1
 current = true
 size = 89.311
 script = ExtResource("1_jqvin")
-mapLogic = NodePath("../Map")
 
 [node name="Map" type="Node3D" parent="." unique_id=276195315 node_paths=PackedStringArray("human")]
 script = ExtResource("1_oy330")
@@ -72,7 +71,7 @@ layout_mode = 2
 script = ExtResource("5_sc4t8")
 inventoryScene = ExtResource("6_ai45w")
 
-[node name="ActionsMenu" parent="UI" unique_id=222244645 node_paths=PackedStringArray("mouseController", "human", "inventoriesManager", "mapLogic") instance=ExtResource("4_1s1bm")]
+[node name="ActionsMenu" parent="UI" unique_id=222244645 node_paths=PackedStringArray("mouseController", "human", "inventoriesManager") instance=ExtResource("4_1s1bm")]
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 125.0
@@ -80,7 +79,6 @@ offset_bottom = 81.0
 mouseController = NodePath("../../Camera3D")
 human = NodePath("../../Human")
 inventoriesManager = NodePath("../LeftPanel/MarginContainer/VBoxContainer/Inventories")
-mapLogic = NodePath("../../Map")
 
 [node name="Cursor" type="MeshInstance3D" parent="." unique_id=1114944768 node_paths=PackedStringArray("mouseController")]
 material_override = SubResource("StandardMaterial3D_bxodh")
