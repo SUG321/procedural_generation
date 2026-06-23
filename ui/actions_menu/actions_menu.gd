@@ -39,7 +39,6 @@ func _on_go_button_pressed() -> void:
 	Utilities.Print_Message("Moviendose hacia: " + structureName)
 	mapLogic.Request_Movement(structureTargetPosition)
 	hide()
-	await human.on_path_ended
 
 func _on_button_loot_pressed() -> void:
 	hide()

@@ -64,8 +64,8 @@ max_value = 20.0
 value = 10.0
 
 [node name="MessagesPanel" type="PanelContainer" parent="VBoxContainer" unique_id=320434519]
-custom_minimum_size = Vector2(0, 80)
-custom_maximum_size = Vector2(-1, 100)
+custom_minimum_size = Vector2(0, 120)
+custom_maximum_size = Vector2(-1, 120)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -77,12 +77,9 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="MessagesTextBox" type="TextEdit" parent="VBoxContainer/MessagesPanel/MarginContainer2" unique_id=333109761]
+[node name="MessagesTextBox" type="RichTextLabel" parent="VBoxContainer/MessagesPanel/MarginContainer2" unique_id=796959356]
 layout_mode = 2
-theme_override_font_sizes/font_size = 15
-placeholder_text = "Aqui se mostraran los mensajes..."
-editable = false
-wrap_mode = 1
+bbcode_enabled = true
 
 [node name="MessageTimer" type="Timer" parent="VBoxContainer/MessagesPanel/MarginContainer2" unique_id=350136060]
 one_shot = true

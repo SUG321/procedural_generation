@@ -21,7 +21,7 @@ func _ready() -> void:
 
 func Follow_Route(newRoute :Array[Vector2i]) -> void:
 	if newRoute.size() != 0:
-		Utilities.Print_Message("En camino...")
+		Utilities.Print_Message(humanName + ": En camino...")
 	actualRoute = newRoute
 	
 	# DEPURACION ---------------------------------------------

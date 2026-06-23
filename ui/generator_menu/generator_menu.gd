@@ -10,11 +10,7 @@ extends PanelContainer
 @export var depthRange: Range # RANGE ANCHO
 
 	# MESSAGES PANEL
-@export var messagesTextBox: TextEdit # MESSAGES TEXTBOX
-@export var human: Human # MESSAGES HUMAN (PATH ENDED SIGNAL)
-
-# VARIABLES
-var defaultMessage: String = "..."
+@export var messagesTextBox: RichTextLabel # MESSAGES TEXTBOX
 
 # FUNCIONES INTEGRADAS
 func _ready() -> void:
@@ -34,7 +30,21 @@ func _on_button_pressed() -> void: # FUNCION: BOTON PRESIONADO
 	
 	map3D.Initialize_Navigation(world.map, depth, width)
 
+var messageHistory: Array[String] = []
+var maxMessages: int = 20
+
 func _on_message_emit(message: String) -> void:
-	messagesTextBox.text = message
-	await human.on_path_ended
-	messagesTextBox.text = defaultMessage
+	messageHistory.push_front(message)
+	
+	if messageHistory.size() > maxMessages:
+		messageHistory.pop_back()
+	
+	var finalText: String = ""
+	
+	for i in range(messageHistory.size()):
+		if i==0:
+			finalText += "[color=yellow][b]- " + messageHistory[i] + "[/b][/color]\n"
+		else:
+			finalText += "[color=gray]- " + messageHistory[i] + "[/color]\n"
+	
+	messagesTextBox.text = finalText

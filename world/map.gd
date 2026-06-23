@@ -1,4 +1,4 @@
-# map.gd
+# map_logic.gd
 class_name MapLogic extends Node3D
 
 # EXPORTS
@@ -70,8 +70,6 @@ func Get_Route(start: Vector2i, end: Vector2i) -> Array[Vector2i]:
 			return []
 	
 	var route: Array[Vector2i] = astarGrid.get_id_path(start, end)
-	
-	Utilities.Print_Message("Estructura detectada. Caminando...")
 	
 	if route.size() == 0:
 		Utilities.Print_Message("Imposible de llegar...")
